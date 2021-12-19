@@ -1,6 +1,6 @@
-import { DeckSettings } from "../types";
+import { OrgSettings } from "./types";
 
-const customTheme: Record<string, any> = {
+export const customTheme: Record<string, any> = {
   // size: {
   //   width: 1366,
   //   height: 768,
@@ -21,10 +21,8 @@ const customTheme: Record<string, any> = {
   },
 };
 
-const organizationSettings: DeckSettings = {
+export const organizationSettings: OrgSettings = {
   logoUrl: "/images/artcoded-logo.png",
   logoLightUrl: "/images/artcoded-logo-light.png",
   slideFooterText: "artcoded.net",
-  theme: customTheme,
 };
-export default organizationSettings;

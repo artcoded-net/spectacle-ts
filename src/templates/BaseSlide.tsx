@@ -1,25 +1,29 @@
 import React, { PropsWithChildren } from "react";
 import { Box, FlexBox, Heading, Slide, Text } from "spectacle";
-import { ConfigurableComponentProps } from "../types";
+import { organizationSettings } from "../organization.settings";
 interface BaseSlideProps {
   title?: string;
   hideBottomBar?: boolean;
 }
 
-const BaseSlide: React.FC<
-  PropsWithChildren<BaseSlideProps & ConfigurableComponentProps>
-> = ({ title, hideBottomBar, children, organizationSettings }) => (
+const BaseSlide: React.FC<PropsWithChildren<BaseSlideProps>> = ({
+  title,
+  hideBottomBar,
+  children,
+}) => (
   <Slide backgroundColor="lightWhite" padding="0px">
-    <Heading
-      width="100%"
-      backgroundColor="secondary"
-      color="lightWhite"
-      textAlign="left"
-      padding="10px 20px"
-      margin="0px"
-    >
-      {title}
-    </Heading>
+    {title && (
+      <Heading
+        width="100%"
+        backgroundColor="secondary"
+        color="lightWhite"
+        textAlign="left"
+        padding="10px 20px"
+        margin="0px"
+      >
+        {title}
+      </Heading>
+    )}
     <Box padding="24px">{children}</Box>
     {!hideBottomBar && (
       <Box

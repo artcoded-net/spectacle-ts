@@ -1,15 +1,16 @@
 import React from "react";
 import { FlexBox, Heading, Slide, Text } from "spectacle";
-import { ConfigurableComponentProps } from "../types";
+import { customTheme } from "../organization.settings";
 
 interface SectionTitleSlideInputs {
   sectionNumber?: number;
   sectionTitle: string;
 }
 
-const TitleSlide: React.FC<
-  SectionTitleSlideInputs & ConfigurableComponentProps
-> = ({ sectionNumber, sectionTitle, organizationSettings }) => (
+const TitleSlide: React.FC<SectionTitleSlideInputs> = ({
+  sectionNumber,
+  sectionTitle,
+}) => (
   <Slide backgroundColor="lightWhite">
     <FlexBox flexDirection="column" justifyContent="center" height="100%">
       {sectionNumber && (
@@ -24,7 +25,7 @@ const TitleSlide: React.FC<
               margin: "20px",
               height: "4px",
               width: "120px",
-              backgroundColor: organizationSettings.theme.colors.primary,
+              backgroundColor: customTheme.colors.primary,
               borderRadius: "20px",
             }}
           />
