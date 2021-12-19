@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import "beautiful-react-diagrams/styles.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 

@@ -1,16 +1,14 @@
 import React, { PropsWithChildren } from "react";
 import { Box, FlexBox, Heading, Slide, Text } from "spectacle";
-
+import { ConfigurableComponentProps } from "../types";
 interface BaseSlideProps {
   title?: string;
   hideBottomBar?: boolean;
 }
 
-const BaseSlide: React.FC<PropsWithChildren<BaseSlideProps>> = ({
-  title,
-  hideBottomBar,
-  children,
-}) => (
+const BaseSlide: React.FC<
+  PropsWithChildren<BaseSlideProps & ConfigurableComponentProps>
+> = ({ title, hideBottomBar, children, organizationSettings }) => (
   <Slide backgroundColor="lightWhite" padding="0px">
     <Heading
       width="100%"
@@ -23,24 +21,26 @@ const BaseSlide: React.FC<PropsWithChildren<BaseSlideProps>> = ({
       {title}
     </Heading>
     <Box padding="24px">{children}</Box>
-    <Box
-      width="100%"
-      position="absolute"
-      bottom="0px"
-      padding="0px"
-      backgroundColor="bottomBar"
-    >
-      <FlexBox
-        flexDirection="row"
-        justifyContent="space-between"
-        padding="4px 24px"
+    {!hideBottomBar && (
+      <Box
+        width="100%"
+        position="absolute"
+        bottom="0px"
+        padding="0px"
+        backgroundColor="bottomBar"
       >
-        <img src="/images/artcoded-logo.png" width="120px" />
-        <Text margin="0px" padding="0px" fontSize="16px" color="primary">
-          artcoded.net
-        </Text>
-      </FlexBox>
-    </Box>
+        <FlexBox
+          flexDirection="row"
+          justifyContent="space-between"
+          padding="4px 24px"
+        >
+          <img src={organizationSettings.logoUrl} width="120px" />
+          <Text margin="0px" padding="0px" fontSize="16px" color="primary">
+            {organizationSettings.slideFooterText}
+          </Text>
+        </FlexBox>
+      </Box>
+    )}
   </Slide>
 );
 

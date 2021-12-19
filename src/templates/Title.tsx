@@ -1,13 +1,17 @@
 import React from "react";
-import { Box, FlexBox, Heading, Slide, Text } from "spectacle";
-import artcodedTheme from "../artcoded-theme";
+import { FlexBox, Heading, Slide, Text } from "spectacle";
+import { ConfigurableComponentProps } from "../types";
 
 interface TitleSlideInputs {
   title: string;
   subtitle?: string;
 }
 
-const TitleSlide: React.FC<TitleSlideInputs> = ({ title, subtitle }) => (
+const TitleSlide: React.FC<TitleSlideInputs & ConfigurableComponentProps> = ({
+  title,
+  subtitle,
+  organizationSettings,
+}) => (
   <Slide backgroundColor="secondary">
     <FlexBox flexDirection="column" justifyContent="center" height="100%">
       <Heading margin="2px" padding="2px" color="lightWhite">
@@ -18,14 +22,14 @@ const TitleSlide: React.FC<TitleSlideInputs> = ({ title, subtitle }) => (
           marginTop: "20px",
           height: "4px",
           width: "120px",
-          backgroundColor: artcodedTheme.colors.lightWhite,
+          backgroundColor: organizationSettings.theme.colors.lightWhite,
           borderRadius: "20px",
         }}
       />
       <Text textAlign="center">{subtitle}</Text>
     </FlexBox>
     <FlexBox alignItems="center">
-      <img src="/images/artcoded-logo-light.png" width="120px" />
+      <img src={organizationSettings.logoLightUrl} width="120px" />
     </FlexBox>
   </Slide>
 );

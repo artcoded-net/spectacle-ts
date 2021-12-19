@@ -1,4 +1,6 @@
-const artcodedTheme = {
+import { DeckSettings } from "../types";
+
+const customTheme: Record<string, any> = {
   // size: {
   //   width: 1366,
   //   height: 768,
@@ -19,4 +21,10 @@ const artcodedTheme = {
   },
 };
 
-export default artcodedTheme;
+const organizationSettings: DeckSettings = {
+  logoUrl: "/images/artcoded-logo.png",
+  logoLightUrl: "/images/artcoded-logo-light.png",
+  slideFooterText: "artcoded.net",
+  theme: customTheme,
+};
+export default organizationSettings;
